@@ -15,10 +15,13 @@ view: order_items {
       raw,
       time,
       date,
+      day_of_year,
       week,
+      week_of_year,
       month,
-      month_num,
+      month_name,
       quarter,
+      quarter_of_year,
       year
     ]
     sql: ${TABLE}."CREATED_AT" ;;

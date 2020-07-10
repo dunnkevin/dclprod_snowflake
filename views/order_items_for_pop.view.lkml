@@ -49,17 +49,36 @@ view: order_items_for_pop {
     type: string
     sql:
         {% if period_chooser._parameter_value == "'quarter'" %}
-        ${created_quarter}
+        ${created_quarter_of_year}
         {% elsif period_chooser._parameter_value == "'month'" %}
-        ${created_month}
+        ${created_month_name}
         {% elsif period_chooser._parameter_value == "'week'" %}
-        ${created_week}
+        ${created_week_of_year}
         {% elsif period_chooser._parameter_value == "'day'" %}
-        ${created_date}
+        ${created_day_of_year}
         {% else %}
-        ${created_date}
+        null
         {% endif %}
         ;;
+  }
+
+  dimension: period_sorter {
+    type: string
+    hidden: yes
+    sql:
+    {% if period_chooser._parameter_value == "'quarter'" %}
+    ${created_quarter}
+    {% elsif period_chooser._parameter_value == "'month'" %}
+    ${created_month}
+    {% elsif period_chooser._parameter_value == "'week'" %}
+    ${created_week_of_year}
+    {% elsif period_chooser._parameter_value == "'day'" %}
+    ${created_day_of_year}
+    {% else %}
+    null
+    {% endif %}
+    ;;
+
   }
 
   dimension: dynamic_compare {
@@ -69,11 +88,11 @@ view: order_items_for_pop {
         {% if compare_chooser._parameter_value == "'year'" %}
         ${created_year}
         {% elsif compare_chooser._parameter_value == "'quarter'" %}
-        ${created_quarter}
+        ${created_quarter_of_year}
         {% elsif compare_chooser._parameter_value == "'month'" %}
-        ${created_month}
+        ${created_month_name}
         {% elsif compare_chooser._parameter_value == "'week'" %}
-        ${created_week}
+        ${created_week_of_year}
         {% else %}
         null
         {% endif %}
