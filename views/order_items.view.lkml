@@ -85,9 +85,14 @@ view: order_items {
     sql: ${TABLE}."SHIPPED_AT" ;;
   }
 
+  # dimension: status {
+  #   type: string
+  #   sql: ${TABLE}."STATUS" ;;
+  # }
+
   dimension: status {
     type: string
-    sql: ${TABLE}."STATUS" ;;
+    sql: '@{color}' ;;
   }
 
   dimension: user_id {

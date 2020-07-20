@@ -2,9 +2,10 @@ connection: "snowflakelooker"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/test_table.dashboard"
 
 datagroup: kd_snowflake_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT CURRENT_TIMESTAMP();;
   max_cache_age: "1 hour"
 }
 
