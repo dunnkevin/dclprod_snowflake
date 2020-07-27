@@ -1,7 +1,5 @@
 view: products {
-  sql_table_name: "PUBLIC"."PRODUCTS"
-    ;;
-  drill_fields: [id]
+  sql_table_name: "PUBLIC"."PRODUCTS";;
 
   dimension: id {
     primary_key: yes
