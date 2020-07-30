@@ -9,6 +9,8 @@ datagroup: kd_snowflake_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+#small change test webhook
+
 persist_with: kd_snowflake_default_datagroup
 
 explore: order_items_for_pop {}
