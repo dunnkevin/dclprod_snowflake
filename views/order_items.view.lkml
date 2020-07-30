@@ -1,5 +1,5 @@
 view: order_items {
-  sql_table_name: "PUBLIC"."ORDER_ITEMS"
+  sql_table_name: PUBLIC.ORDER_ITEMS
     ;;
   drill_fields: [id]
 
