@@ -1,7 +1,6 @@
 view: order_items {
   sql_table_name: PUBLIC.ORDER_ITEMS
     ;;
-  drill_fields: [id]
 
   dimension: id {
     primary_key: yes
@@ -92,14 +91,9 @@ view: order_items {
     sql: ${TABLE}."SHIPPED_AT" ;;
   }
 
-  # dimension: status {
-  #   type: string
-  #   sql: ${TABLE}."STATUS" ;;
-  # }
-
   dimension: status {
     type: string
-    sql: '@{color}' ;;
+    sql: ${TABLE}."STATUS" ;;
   }
 
   dimension: user_id {
@@ -110,13 +104,38 @@ view: order_items {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
   }
 
   measure: order_count {
     type: count_distinct
     sql: ${order_id} ;;
   }
+
+  parameter:  currency {
+    type: string
+    allowed_value: {
+      label: "USD"
+      value: "USD"
+    }
+    allowed_value: {
+      label: "GBP"
+      value: "GBP"
+    }
+  }
+
+  measure: converted_total_amount {
+    type: sum
+    hidden: no
+    label: "Total Amount"
+    value_format: "#,###.00"
+    html: {% if order_items.currency._parameter_value == "'USD'" %} ${{ rendered_value }}
+      {% elsif order_items.currency._parameter_value == "'GBP'" %} £{{ rendered_value }}
+      {% elsif order_items.currency._parameter_value == "'EUR'" %} €{{ rendered_value }}
+      {% elsif order_items.currency._parameter_value == "'CAD'" %} C${{ rendered_value }}
+      {% endif %};;
+
+      sql: ${sale_price};;
+    }
 
   # ----- Sets of fields for drilling ------
   set: detail {
