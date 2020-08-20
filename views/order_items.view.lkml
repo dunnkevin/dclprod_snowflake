@@ -7,6 +7,8 @@ view: order_items {
     type: number
     sql: ${TABLE}."ID" ;;
   }
+  
+  #heythere
 
   dimension_group: created {
     type: time
