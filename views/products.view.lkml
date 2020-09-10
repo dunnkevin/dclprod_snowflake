@@ -17,6 +17,11 @@ view: products {
     sql: ${TABLE}."CATEGORY" ;;
   }
 
+  dimension: yesno {
+    type: yesno
+    sql:  ${department} = "Men" ;;
+  }
+
   dimension: cost {
     type: number
     sql: ${TABLE}."COST" ;;

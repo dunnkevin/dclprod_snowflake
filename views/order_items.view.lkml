@@ -8,6 +8,15 @@ view: order_items {
     sql: ${TABLE}."ID" ;;
   }
 
+  parameter: date_param {
+    type: date_time
+  }
+
+  dimension: param_dim {
+    type: string
+    sql: {% parameter date_param %} ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -26,6 +35,7 @@ view: order_items {
     sql: ${TABLE}."CREATED_AT" ;;
   }
 
+
   dimension_group: delivered {
     type: time
     timeframes: [
@@ -39,6 +49,30 @@ view: order_items {
     ]
     sql: ${TABLE}."DELIVERED_AT" ;;
   }
+
+  dimension_group: shipping {
+    type: duration
+    sql_start: ${created_raw};;
+    sql_end: ${delivered_raw} ;;
+    intervals: [
+      minute,
+      hour,
+      day,
+      month
+    ]
+  }
+
+  dimension: dynamic_shipping {
+    sql: CASE WHEN ${days_shipping} < 7 THEN ${hours_shipping} || ' hours' ELSE ${days_shipping} || ' days' END ;;
+    order_by_field: dynamic_shipping_ordering
+  }
+
+  dimension: dynamic_shipping_ordering {
+    type: number
+    sql: CASE WHEN ${days_shipping} < 7 THEN ${hours_shipping}  ELSE ${days_shipping} * 168 END ;;
+  }
+
+
 
   dimension: inventory_item_id {
     type: number
