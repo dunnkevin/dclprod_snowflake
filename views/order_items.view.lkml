@@ -24,6 +24,11 @@ view: order_items {
     sql: {% parameter date_param %} ;;
   }
 
+  dimension: param_dim2 {
+    type: date
+    sql: {% parameter date_param %} ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
