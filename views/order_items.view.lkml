@@ -7,11 +7,15 @@ view: order_items {
     type: number
     sql: ${TABLE}."ID" ;;
   }
-  
+
   #heythere
 
+  filter: date_filter {
+    type: date
+  }
+
   parameter: date_param {
-    type: date_time
+    type: date
   }
 
   dimension: param_dim {
