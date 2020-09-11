@@ -17,6 +17,7 @@ view: order_items {
   parameter: date_param {
     type: date
   }
+  #To commit
 
   dimension: param_dim {
     type: string
