@@ -30,11 +30,6 @@ view: order_items {
     sql: {% parameter date_param %} ;;
   }
 
-  dimension: 5_for_pat {
-    type: number
-    sql: 5 ;;
-  }
-
   dimension_group: created {
     type: time
     timeframes: [
