@@ -11,7 +11,8 @@ datagroup: kd_snowflake_default_datagroup {
 
 persist_with: kd_snowflake_default_datagroup
 
-explore: order_items_for_pop {}
+# explore: order_items_for_pop {}
+
 
 explore: derived_table {
   access_filter: {

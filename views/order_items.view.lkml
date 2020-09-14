@@ -8,10 +8,16 @@ view: order_items {
     sql: ${TABLE}."ID" ;;
   }
 
+  set: field_set {
+    fields: [created_date,sale_price]
+  }
+
   #heythere
 
-  filter: date_filter {
-    type: date
+  filter: string_filter {
+    type: string
+    # suggest_dimension: order_items.sale_price
+    suggest_dimension: dne.dne
   }
 
   parameter: date_param {
@@ -22,6 +28,11 @@ view: order_items {
   dimension: param_dim {
     type: string
     sql: {% parameter date_param %} ;;
+  }
+
+  dimension: 5_for_pat {
+    type: number
+    sql: 5 ;;
   }
 
   dimension_group: created {
@@ -145,11 +156,17 @@ view: order_items {
 
   measure: count {
     type: count
+    filters: [
+      products.department: "whatever"
+    ]
   }
 
   measure: order_count {
     type: count_distinct
     sql: ${order_id} ;;
+    filters: [
+      products.department: "whatever"
+    ]
   }
 
   parameter:  currency {
@@ -169,13 +186,10 @@ view: order_items {
     hidden: no
     label: "Total Amount"
     value_format: "#,###.00"
-    html: {% if order_items.currency._parameter_value == "'USD'" %} ${{ rendered_value }}
-      {% elsif order_items.currency._parameter_value == "'GBP'" %} £{{ rendered_value }}
-      {% elsif order_items.currency._parameter_value == "'EUR'" %} €{{ rendered_value }}
-      {% elsif order_items.currency._parameter_value == "'CAD'" %} C${{ rendered_value }}
-      {% endif %};;
-
-      sql: ${sale_price};;
+    sql: ${sale_price};;
+    filters: [
+      products.department: "whatever"
+    ]
     }
 
   # ----- Sets of fields for drilling ------

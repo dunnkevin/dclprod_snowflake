@@ -7,6 +7,10 @@ view: products {
     sql: ${TABLE}."ID" ;;
   }
 
+  set: field_set {
+    fields: [brand,category]
+  }
+
   dimension: brand {
     type: string
     sql: ${TABLE}."BRAND" ;;
