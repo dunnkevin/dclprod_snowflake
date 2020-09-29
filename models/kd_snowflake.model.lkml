@@ -2,7 +2,7 @@ connection: "snowflakelooker"
 
 # include all the views
 include: "/views/**/*.view"
-include: "/test_table.dashboard"
+include: "/colors.dashboard"
 
 datagroup: kd_snowflake_default_datagroup {
   sql_trigger: SELECT CURRENT_TIMESTAMP();;
@@ -23,6 +23,14 @@ explore: derived_table {
 
 
 explore: order_items {
+  access_filter: {
+    field: order_items.created_date
+    user_attribute: kevin_date
+  }
+  access_filter: {
+    field: products.category
+    user_attribute: kd_ua
+  }
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;

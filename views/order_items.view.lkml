@@ -6,11 +6,18 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}."ID" ;;
+    html: <a href="/looks/106?">{{value}} </a>;;
   }
 
   set: field_set {
     fields: [created_date,sale_price]
   }
+
+  # dimension: testy_date {
+  #   type: string
+  #   sql: {{ filters.date_start._sql }} ;;
+  # }
+
 
   #heythere
 
@@ -78,6 +85,7 @@ view: order_items {
   dimension: dynamic_shipping {
     sql: CASE WHEN ${days_shipping} < 7 THEN ${hours_shipping} || ' hours' ELSE ${days_shipping} || ' days' END ;;
     order_by_field: dynamic_shipping_ordering
+    html: {{ dynamic_shipping._sql }} ;;
   }
 
   dimension: dynamic_shipping_ordering {
@@ -151,9 +159,35 @@ view: order_items {
 
   measure: count {
     type: count
-    filters: [
-      products.department: "whatever"
-    ]
+    drill_fields: [created_year, status]
+    link: {
+      label: "Drill Down Here"
+      url: "{{link}}&f[order_items.status]=8%2C6&f[products.department]=expansion&limit=5000&total=on"
+    }
+  }
+
+  measure: boop {
+    label: "1-3"
+    type: number
+    sql: sum(null) ;;
+  }
+
+  measure: boop1 {
+    label: "2-3"
+    type: number
+    sql: sum(null) ;;
+  }
+
+  measure: boop2 {
+    label: "3-3"
+    type: number
+    sql: sum(null) ;;
+  }
+
+  measure: boop3 {
+    label: "4-3"
+    type: number
+    sql: sum(null) ;;
   }
 
   measure: order_count {
