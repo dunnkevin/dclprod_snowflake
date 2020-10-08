@@ -9,6 +9,12 @@ datagroup: kd_snowflake_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+explore: orders {
+  view_name: products
+}
+
+#comment
+
 persist_with: kd_snowflake_default_datagroup
 
 # explore: order_items_for_pop {}
@@ -23,14 +29,6 @@ explore: derived_table {
 
 
 explore: order_items {
-  access_filter: {
-    field: order_items.created_date
-    user_attribute: kevin_date
-  }
-  access_filter: {
-    field: products.category
-    user_attribute: kd_ua
-  }
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;

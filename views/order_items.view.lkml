@@ -37,6 +37,7 @@ view: order_items {
     sql: {% parameter date_param %} ;;
   }
 
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -80,6 +81,11 @@ view: order_items {
       day,
       month
     ]
+  }
+
+
+  dimension: max_shipping {
+    sql: (select max(${created_raw}) from ${TABLE})  ;;
   }
 
   dimension: dynamic_shipping {
@@ -197,6 +203,8 @@ view: order_items {
       products.department: "whatever"
     ]
   }
+
+
 
   parameter:  currency {
     type: string
