@@ -51,7 +51,6 @@ view: products {
     type: number
     sql: ${TABLE}."RETAIL_PRICE" ;;
   }
-
   dimension: sku {
     type: string
     sql: ${TABLE}."SKU" ;;

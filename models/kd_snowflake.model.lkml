@@ -9,10 +9,6 @@ datagroup: kd_snowflake_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-explore: orders {
-  view_name: products
-}
-
 #comment
 
 persist_with: kd_snowflake_default_datagroup

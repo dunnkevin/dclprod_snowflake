@@ -19,13 +19,6 @@ view: order_items {
   # }
 
 
-  #heythere
-
-  filter: string_filter {
-    type: string
-    # suggest_dimension: order_items.sale_price
-    suggest_dimension: dne.dne
-  }
 
   parameter: date_param {
     type: date
