@@ -23,6 +23,8 @@ view: order_items_for_pop {
     }
   }
 
+  #comment 1
+
   # Prameter for choosing what to compare
   parameter: compare_chooser {
     type: string
