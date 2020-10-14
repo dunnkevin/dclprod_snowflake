@@ -73,6 +73,7 @@
     trellis: ''
     stacking: ''
     limit_displayed_rows: true
+    limit_displayed_rows_values:
     legend_position: center
     point_style: none
     show_value_labels: false
@@ -85,10 +86,8 @@
     show_silhouette: false
     totals_color: "#808080"
     y_axes: []
+    limit_displayed_rows: true
     limit_displayed_rows_values:
-      show_hide: hide
-      first_last: first
-      num_rows: 0
     series_types: {}
     series_labels:
       history.created_day_of_week: Created
