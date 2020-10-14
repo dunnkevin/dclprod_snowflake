@@ -86,8 +86,6 @@
     show_silhouette: false
     totals_color: "#808080"
     y_axes: []
-    limit_displayed_rows: true
-    limit_displayed_rows_values:
     series_types: {}
     series_labels:
       history.created_day_of_week: Created
