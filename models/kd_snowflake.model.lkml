@@ -2,7 +2,7 @@ connection: "snowflakelooker"
 
 # include all the views
 include: "/views/**/*.view"
-include: "/colors.dashboard"
+include: "/*.dashboard"
 
 datagroup: kd_snowflake_default_datagroup {
   sql_trigger: SELECT CURRENT_TIMESTAMP();;
@@ -16,12 +16,6 @@ persist_with: kd_snowflake_default_datagroup
 # explore: order_items_for_pop {}
 
 
-explore: derived_table {
-  access_filter: {
-    field: derived_table.app_key
-    user_attribute: city_name
-  }
-}
 
 
 explore: order_items {
