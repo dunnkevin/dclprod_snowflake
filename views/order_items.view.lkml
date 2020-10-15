@@ -23,7 +23,10 @@ view: order_items {
   parameter: date_param {
     type: date
   }
-  #To commit
+
+  dimension: dummy_field_for_breaking_search {
+    sql:lower(${TABLE}."broken_search") ;;
+  }
 
   dimension: param_dim {
     type: string
