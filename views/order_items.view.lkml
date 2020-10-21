@@ -6,7 +6,24 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}."ID" ;;
-    html: <a href="/looks/106?">{{value}} </a>;;
+    html:
+    {% if value %}
+    <a href="/looks/123?field={{ value }}&field2={{ created_date._value }}&field3={{ products.department._value }}" target="_blank">strinhere</a>
+    {% endif %}
+    ;;
+  }
+
+  dimension: id2 {
+    type: number
+    sql: ${TABLE}."ID" ;;
+    html:
+    <a href="/looks/123?field={{value}}&field2={{created_date._value}}&field3={{products.department._value}}" target="_blank">strinhere</a>
+    ;;
+    # html:
+    # {% if value %}
+    # <a href="/looks/123?field={{value}}&field2={{created_date._value}}&field3={{products.department._value}}" target="_blank">strinhere</a>
+    # {% endif %}
+    # ;;
   }
 
   set: field_set {
@@ -126,6 +143,19 @@ view: order_items {
     type: number
     sql: ${TABLE}."SALE_PRICE" ;;
   }
+
+  measure: total_sale_price_negative {
+    type: sum
+    sql: -1*${sale_price} ;;
+    value_format_name: usd_0
+  }
+
+  measure: total_sale_price_positive {
+    type: sum
+    sql: -0.5*${sale_price} ;;
+    value_format_name: usd_0
+  }
+
 
   dimension: sale_price_tiers{
     type: tier
