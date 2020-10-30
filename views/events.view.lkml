@@ -8,6 +8,9 @@ view: events {
     type: number
     sql: ${TABLE}."ID" ;;
   }
+  
+  #Welcometothecomment
+  #Welcometothenextone
 
   dimension: browser {
     type: string

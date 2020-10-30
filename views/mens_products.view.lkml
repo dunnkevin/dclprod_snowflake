@@ -1,5 +1,5 @@
-view: products {
-  sql_table_name: "PUBLIC"."PRODUCTS";;
+view: mens_products {
+  sql_table_name: (SELECT * FROM "PUBLIC"."PRODUCTS" WHERE department='Men');;
 
   dimension: id {
     primary_key: yes
@@ -51,6 +51,7 @@ view: products {
     type: number
     sql: ${TABLE}."RETAIL_PRICE" ;;
   }
+
   dimension: sku {
     type: string
     sql: ${TABLE}."SKU" ;;
@@ -59,5 +60,4 @@ view: products {
   measure: count {
     type: count
   }
-
 }
