@@ -39,4 +39,7 @@ explore: order_items {
   }
 }
 
+explore: union_test {}
+explore: union_test_number {}
+
 explore: users {}
