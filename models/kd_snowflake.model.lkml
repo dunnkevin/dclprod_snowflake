@@ -47,6 +47,16 @@ explore: order_items {
   }
 }
 
+
+
+
+
+explore: union_test {}
+explore: union_test_number {}
+
+
+
+
 explore: payments {
   from: order_items
   join: users {
