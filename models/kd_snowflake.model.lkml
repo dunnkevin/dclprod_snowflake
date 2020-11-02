@@ -22,11 +22,56 @@ explore: derived_table {}
 
 explore: order_items {
   join: users {
+    view_label: "Order Status"
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
     relationship: many_to_one
     sql_where: ${users.city} = 'Santa Cruz' ;;
   }
+  join: user_status {
+    from: users
+    sql_on: ${user_status.id} = ${order_items.user_id} ;;
+    relationship: many_to_one
+    type: left_outer
+    # view_label: "user_status"
+  }
+
+  join: company_status {
+    from: users
+    sql_on: ${company_status.id} = ${order_items.user_id} ;;
+    relationship: many_to_one
+    type: left_outer
+  }
+
+
+  # join: status {
+  #   view_label: "Order Status"
+  #   sql_on: ${company_order.status_id} = ${status.status_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # join: user_status {
+  #   from: status
+  #   foreign_key: user.status_id
+  # }
+
+  # join: company_status {
+  #   from: status
+  #   sql_on: ${company_status.status_id} = ${company.status_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # join: company_order_status {
+  #   from: status
+  #   sql_on: ${company_order_status.status_id} = ${company_order.status_id} ;;
+  #   relationship: many_to_one
+  # }
+
+  # join: status {
+  #   view_label: "Order Status"
+  #   sql_on: ${company_order.status_id} = ${status.status_id} ;;
+  #   relationship: many_to_one
+  # }
 
   join: inventory_items {
     type: left_outer
