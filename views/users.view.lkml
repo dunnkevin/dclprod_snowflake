@@ -7,6 +7,7 @@ view: users {
     primary_key: yes
     type: number
     sql: ${TABLE}."ID" ;;
+    tags: ["user_id"]
   }
 
   dimension: age {

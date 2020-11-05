@@ -16,9 +16,6 @@ view: order_items {
   dimension: id2 {
     type: number
     sql: ${TABLE}."ID" ;;
-    html:
-    <a href="/looks/123?field={{value}}&field2={{created_date._value}}&field3={{products.department._value}}" target="_blank">strinhere</a>
-    ;;
     # html:
     # {% if value %}
     # <a href="/looks/123?field={{value}}&field2={{created_date._value}}&field3={{products.department._value}}" target="_blank">strinhere</a>
@@ -192,10 +189,7 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [created_year, status]
-    link: {
-      label: "Drill Down Here"
-      url: "{{link}}&f[order_items.status]=8%2C6&f[products.department]=expansion&limit=5000&total=on"
-    }
+    html: <a target="_self" href="/dashboards/997">{{rendered_value}}}}</a>;;
   }
 
   measure: boop {
