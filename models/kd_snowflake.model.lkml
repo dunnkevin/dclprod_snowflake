@@ -22,11 +22,9 @@ explore: derived_table {}
 
 explore: order_items {
   join: users {
-    view_label: "Order Status"
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
     relationship: many_to_one
-    sql_where: ${users.city} = 'Santa Cruz' ;;
   }
   join: user_status {
     from: users
