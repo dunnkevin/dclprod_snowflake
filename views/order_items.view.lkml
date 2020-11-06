@@ -1,6 +1,7 @@
 view: order_items {
-  sql_table_name: PUBLIC.ORDER_ITEMS
-    ;;
+  sql_table_name: (select uuid_string() as primary_key,* FROM PUBLIC.ORDER_ITEMS) ;;
+
+  dimension: primary_key {}
 
   dimension: id {
     primary_key: yes

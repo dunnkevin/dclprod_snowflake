@@ -1,4 +1,5 @@
 - dashboard: test_table_vis
+  preferred_viewer: dashboards-next
   title: Test Table Vis
   layout: newspaper
   elements:
