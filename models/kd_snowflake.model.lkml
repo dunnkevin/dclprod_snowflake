@@ -9,7 +9,7 @@ datagroup: kd_snowflake_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-#comment
+#DEVELOPMENT BRANCH IS THE NEW PRODUCTION MAHAHAHJAH
 
 persist_with: kd_snowflake_default_datagroup
 
